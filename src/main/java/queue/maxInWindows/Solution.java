@@ -40,10 +40,52 @@ public class Solution {
         return maxList;
         }
 
+
+    public ArrayList<Integer> maxInWindows2(int [] num, int size)
+    {
+        if(num.length < 1){
+            return null;
+        }
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int maxIndex = 0;
+        int lowIndex = 0;
+        int highIndex = -1;
+        if(size <1 || size >num.length){
+            return list;
+        }
+        for(int i =0;i<size;i++){
+            maxIndex = num[i] > num[maxIndex] ? i:maxIndex;
+            highIndex++;
+        }
+
+        System.out.println("highIndex:"+highIndex+"-lowIndex:"+lowIndex+"-maxIndex"+maxIndex);
+        while(highIndex <num.length){
+            System.out.println("highIndex:"+highIndex+"-lowIndex:"+lowIndex+"-maxIndex"+maxIndex);
+            if(num[highIndex] > num[maxIndex]){
+                maxIndex = highIndex;
+                list.add(num[maxIndex]);
+                highIndex++;
+                lowIndex++;
+                continue;
+            }
+            if(maxIndex >= lowIndex){
+            }else{
+                maxIndex = lowIndex;
+                for(int i =lowIndex;i<=highIndex;i++){
+                    maxIndex = num[maxIndex] > num[i]? maxIndex: i;
+                }
+            }
+            list.add(num[maxIndex]);
+            highIndex++;
+            lowIndex++;
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
-        int[] num = new int[]{10,14,12,11};
+        int[] num = new int[]{2,3,4,2,6,2,5,1};
         Solution solution = new Solution();
-        ArrayList<Integer> list = solution.maxInWindows(num,1);
+        ArrayList<Integer> list = solution.maxInWindows2(num,3);
         for(int i =0;i < list.size();i++){
             System.out.println(list.get(i));
         }

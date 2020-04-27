@@ -29,8 +29,9 @@ public class Solution {
     public static void main(String[] args) {
         int[] a = new int[]{1,2,3,4,5};
         int[] b = new int[]{4,5,3,2,1};
+        int[] pushB = new int[]{3,2,1,5,4};
         Solution solution = new Solution();
-        System.out.println(solution.isPopOrder(a,b));
+        System.out.println(solution.isPopOrder(a,pushB));
     }
 }
 

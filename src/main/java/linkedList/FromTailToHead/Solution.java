@@ -1,7 +1,7 @@
 package linkedList.FromTailToHead;
 
 import java.util.ArrayList;
-
+import java.util.Stack;
 
 
 public class Solution {
@@ -32,6 +32,19 @@ public class Solution {
             listNode = listNode.next;
         }
         return list;
+    }
+
+    public ArrayList<Integer> printListFromTailToHead2(ListNode node){
+             ListNode pre = null;
+             Stack<Integer> stack = new Stack<Integer>();
+             ArrayList<Integer> list = new ArrayList<Integer>();
+             while(node.next != null){
+                 stack.add(node.val);
+             }
+             while(!stack.isEmpty()){
+                 list.add(stack.pop());
+             }
+            return list;
     }
 
 }
